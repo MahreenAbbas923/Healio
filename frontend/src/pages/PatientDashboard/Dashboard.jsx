@@ -1,16 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import Profile from './Profile';
 import Doctors from './Doctors';
 import Appointments from './Appointments';
+import { getUser } from '../../utils/api';
+import logo from '../../assets/logo.jpg';
 
 const PatientDashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [userName, setUserName] = useState('');
   const [activeView, setActiveView] = useState('home');
   const [reflection, setReflection] = useState('');
   const [mood, setMood] = useState(null);
   const [savedReflections, setSavedReflections] = useState([]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const user = getUser();
+    if (user) {
+      if (user.firstName && user.lastName) {
+        setUserName(`${user.firstName} ${user.lastName}`);
+      } else if (user.firstName) {
+        setUserName(user.firstName);
+      } else if (user.fullName) {
+        setUserName(user.fullName);
+      } else if (user.name) {
+        setUserName(user.name);
+      }
+    }
+  }, []);
 
   const logout = () => {
     localStorage.removeItem('token'); // Clear JWT
@@ -79,9 +97,9 @@ const PatientDashboard = () => {
     <div className="flex h-screen bg-gray-50">
       {/* Sidebar */}
       <aside className={`w-64 bg-white shadow-lg transition-all ${sidebarOpen ? 'block' : 'hidden'}`}>
-        <div className="p-6 border-b">
-          <h3 className="font-bold text-purple-600">Patient Portal</h3>
-          <p className="text-sm text-gray-500">Healio</p>
+        <div className="p-6 border-b flex flex-col items-center">
+          <img src={logo} alt="Healio Logo" className="w-16 h-16 rounded-full object-cover mb-2" />
+          <h3 className="font-bold text-purple-600 text-lg">Patient Dashboard</h3>
         </div>
         <nav className="p-4 space-y-2">
           <button onClick={() => navigate('/patient-dashboard')} className="w-full flex gap-3 px-4 py-3 rounded-lg hover:bg-pink-100 text-purple-600">
@@ -106,7 +124,7 @@ const PatientDashboard = () => {
       <main className="flex-1 overflow-y-auto p-8 bg-gray-50">
         {/* Top Header */}
         <header className="bg-gradient-to-r from-purple-600 to-pink-500 text-white p-6 rounded-lg mb-8 text-center">
-          <h1 className="text-3xl font-bold">Welcome, Mahreen Abbas</h1>
+          <h1 className="text-3xl font-bold">Welcome, {userName || 'Patient'}</h1>
           <p className="text-lg italic">"Your mental health is a priority. Your happiness is essential."</p>
           <button onClick={() => setSidebarOpen(!sidebarOpen)} className="absolute top-4 left-4 md:hidden text-white">
             <i className="fas fa-arrow-right"></i>

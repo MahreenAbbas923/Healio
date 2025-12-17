@@ -140,23 +140,3 @@ export const appointmentAPI = {
     });
   },
 };
-
-// Wellness API calls
-export const wellnessAPI = {
-  addEntry: async (entryData) => {
-    return apiRequest('/wellness', {
-      method: 'POST',
-      body: JSON.stringify(entryData),
-    });
-  },
-  getEntries: async (params = {}) => {
-    const queryString = new URLSearchParams(params).toString();
-    return apiRequest(`/wellness${queryString ? `?${queryString}` : ''}`);
-  },
-  getStats: async () => {
-    return apiRequest('/wellness/stats');
-  },
-};
-
-
-
