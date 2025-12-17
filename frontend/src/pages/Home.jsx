@@ -215,7 +215,13 @@ const CTASection = () => (
           href="/patient-dashboard"
           className="inline-flex items-center gap-2 px-6 py-3 text-base font-medium rounded-full cursor-pointer transition-all duration-300 bg-purple-800 text-white hover:bg-purple-900 border-2 border-white"
         >
-          <i className="fas fa-user-md"></i> Patient Dashboard
+          <i className="fas fa-user"></i> Patient Dashboard
+        </a>
+        <a
+          href="/doctor-dashboard"
+          className="inline-flex items-center gap-2 px-6 py-3 text-base font-medium rounded-full cursor-pointer transition-all duration-300 bg-pink-500 text-white hover:bg-pink-600 border-2 border-white"
+        >
+          <i className="fas fa-user-md"></i> Doctor Dashboard
         </a>
       </div>
     </div>
