@@ -30,7 +30,7 @@ const Navbar = ({ openLogin, openRegister }) => {
             <a href="/" className="text-gray-700 font-medium hover:text-purple-600 transition">Home</a>
             <a href="/about" className="text-gray-700 font-medium hover:text-purple-600 transition">About</a>
             <a href="/awareness-hub" className="text-gray-700 font-medium hover:text-purple-600 transition">Awareness Hub</a>
-            <a href="#contact" className="text-gray-700 font-medium hover:text-purple-600 transition">Contact</a>
+            <a href="/contact" className="text-gray-700 font-medium hover:text-purple-600 transition">Contact</a>
           </div>
 
           {/* Desktop Buttons */}
@@ -60,7 +60,7 @@ const Navbar = ({ openLogin, openRegister }) => {
             <a href="/" onClick={closeMobileMenu} className="block text-lg font-medium hover:text-purple-600">Home</a>
             <a href="/about" onClick={closeMobileMenu} className="block text-lg font-medium hover:text-purple-600">About</a>
             <a href="/awareness-hub" onClick={closeMobileMenu} className="block text-lg font-medium hover:text-purple-600">Awareness Hub</a>
-            <a href="#contact" onClick={closeMobileMenu} className="block text-lg font-medium hover:text-purple-600">Contact</a>
+            <a href="/contact" onClick={closeMobileMenu} className="block text-lg font-medium hover:text-purple-600">Contact</a>
             
             <div className="pt-4 border-t border-gray-300">
               <p className="text-purple-600 font-medium mb-3 flex items-center gap-2">
